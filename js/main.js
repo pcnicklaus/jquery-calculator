@@ -11,12 +11,46 @@
 // convert it to an array, and then a series of if then that test for the operator
 // might be able to make everything work by when they press the = it runs the math function???
 
+// GLOBALS
+
 var screenContents = '';
 var a = '';
 var b = '';
-var ans = '';
+
+
+// HELPER FUNCTIONS
+
+function addition() {
+  console.log(ans + "+");
+  var ans = a + b;
+  // console.log(ans + "+");
+  return ans;
+}
+
+function subtract() {
+  var ans = a - b;
+  console.log(ans + "s");
+  return ans;
+}
+
+function divide() {
+  var ans = (a / b);
+  console.log(ans + "d");
+  return ans;
+}
+
+function multiply() {
+  var ans = (a * b);
+  console.log(ans + "m");
+  return ans;
+}
+
+// DOC READY
 
 $(document).ready(function() {
+
+  // EVENTS
+
   // console.log("sanity")
   // var $keyPressed = $(this).html();
   $('span').on('click', function() {
@@ -24,6 +58,8 @@ $(document).ready(function() {
     var $keyPressed = $(this).html();
     $('#screen').append($keyPressed);
   });
+
+  // HELPER FUNCTIONS
 
   //how do i test for this????
   function getScreen() {
@@ -35,56 +71,41 @@ $(document).ready(function() {
     console.log(screenContents);
     console.log(a);
     console.log(b);
-    mathStuff(screenContents);
     return screenContents;
   }
-    getScreen();
+
 
   // math decision statements
   function mathStuff(screenContents) {
-    console.log("sanityMath")
+    console.log("sanityMath");
     console.log(screenContents.charAt(1).toString());
     if (screenContents.charAt(1).toString() === "+") {
       console.log("firing");
-      addition();
+      return addition();
     } else if (screenContents.charAt(1).toString() === "-") {
       console.log("firing1");
-      subtract();
-    } else if (screenContents.charAt(1).toString() === "*") {
+      return subtract();
+    } else if (screenContents.charAt(1).toString() === "x") {
       console.log("firing2");
-      divide();
-    } else if (screenContents.charAt(1).toString() === "/") {
+      return multiply();
+    } else {
       console.log("firing3");
-      multiply();
+      return divide();
     }
   }
 
 
-  //calculate function
+  // EVENT HANDLERS AND LOGIC/CONTROLLER
 
-  function addition() {
-    var ans = a + b;
-    console.log(ans + "+");
-    return ans;
-  }
+  // print to screen the answer
+  $('#calc').on('click', function () {
+    // console.log('firing');
+    var contentsOftheScreen = getScreen();
+    var results = mathStuff(contentsOftheScreen);
+    $('#screen').html('');
+    $('#screen').html(results);
+  });
 
-  function subtract() {
-    var ans = a - b;
-    console.log(ans + "s");
-    return ans;
-  }
-
-  function divide() {
-    var ans = a / b;
-    console.log(ans + "d");
-    return ans;
-  }
-
-  function multiply() {
-    var ans = a * b;
-    console.log(ans + "m");
-    return ans;
-  }
 
     //clear function
   $('#cancel').on('click', function(){
