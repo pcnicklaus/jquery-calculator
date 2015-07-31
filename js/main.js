@@ -11,6 +11,26 @@
 // convert it to an array, and then a series of if then that test for the operator
 // might be able to make everything work by when they press the = it runs the math function???
 
+
+// $('.operator').not('#cancel').not("#calc").on("click", function(){
+//   var opPressed = $(this).html();
+//   $('#screen').append(" " + opPressed + " ");
+// });
+
+// $('.buttons span').not('.operator').on('click', function () {
+//  var keyPress = $(this).html();
+//  $('#screen').append(keyPress);
+// });
+
+// var operator array = [+,-,/,*]
+// var screen results = "98 + 76"
+// screenresults.split = ['9','8','+','7','6']
+// for loop
+//   operator array
+//     for loop
+//         results array
+
+
 // GLOBALS
 
 var screenContents = '';
@@ -51,12 +71,15 @@ $(document).ready(function() {
 
   // EVENTS
 
+
+
   // console.log("sanity")
   // var $keyPressed = $(this).html();
   $('span').on('click', function() {
     //variable that holds the
     var $keyPressed = $(this).html();
     $('#screen').append($keyPressed);
+
   });
 
   // HELPER FUNCTIONS

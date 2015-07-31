@@ -1,3 +1,7 @@
+main.js = is the calculator only able to work in the manner of, 1 number, operator, 1 number
+main2.js = is the calculator completely working for any length of number, operator, any length of number!!!
+
+
 #Calculator Assignment
 
 Goal: Use jQuery to make the provided calculator markup function as a simple calculator
