@@ -41,45 +41,26 @@ function multiply() {
 $(document).ready(function() {
 
   // EVENTS
-
-
-
-  // console.log("sanity")
-  // var $keyPressed = $(this).html();
   $('span').on('click', function() {
-    //variable that holds the
     var $keyPressed = $(this).html();
     $('#screen').append($keyPressed);
-
   });
 
   // HELPER FUNCTIONS
 
   //how do i test for this????
   function getScreen() {
-    // console.log("sanity")
     var screenContents = $('#screen').html();
-
     for (var i = 0; i < operators.length; i++) {
       for (var j = 0; j < screenContents.length; j++) {
         if ( operators[i] === screenContents[j] ) {
-          // console.log(i + "i");
-          // console.log(j);
           y = screenContents[j];
           var indexOfOperator = screenContents.indexOf(screenContents[j]);
-          console.log(indexOfOperator + " is screen contents index of operator")
-          console.log(y + " is operator");
         }
-          r = indexOfOperator + 1;
-          // console.log(r + "r =")
       }
     }
-    console.log(screenContents + " is screen")
-    console.log(r + "is r")
     a = parseInt(screenContents.slice(0,indexOfOperator));
     b = parseInt(screenContents.slice(r));
-    console.log(a + "a")
-    console.log(b + "b")
     return screenContents;
   }
 
@@ -108,7 +89,6 @@ $(document).ready(function() {
 
   // print to screen the answer
   $('#calc').on('click', function () {
-    // console.log('firing');
     var contentsOftheScreen = getScreen();
     var results = mathStuff(contentsOftheScreen);
     $('#screen').html('');
